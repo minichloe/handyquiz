@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-client-watch": "webpack -w",
-    "server": "nodemon index.js -e html,js,css --ignore public --ignore client",
+    "server": "nodemon server -e html,js,css --ignore public --ignore client",
     "start": "NODE_ENV='development' npm run build-client-watch & npm run server"
   },
   "repository": {

@@ -6,6 +6,8 @@ const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 
 const app = express();
+const db = require('./db');
+const PORT = 5000;
 
 // logging middleware
 app.use(volleyball);
@@ -26,9 +28,22 @@ app.get('*', (req, res) => {
 });
 
 // error handling middleware
+app.use((req, res, next) => {
+  if (path.extname(req.path).length) {
+    const err = new Error('Not found');
+    err.status = 404;
+    next(err);
+  } else {
+    next();
+  }
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || 'Internal server error');
 });
 
-module.exports = app;
+db.sync().then(() => {
+  console.log('Database synced');
+  app.listen(PORT, () => console.log(`Serving requests on port ${PORT}`));
+});
