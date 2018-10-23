@@ -2,17 +2,28 @@ const Sequelize = require('sequelize');
 const db = require('../database');
 
 const TestCleaning = db.define('testCleaning', {
-  name: {
-    type: Sequelize.STRING,
+  experience: {
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
+  cobwebs: {
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
-  service: {
-    type: Sequelize.STRING,
+  kitchen: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  cleaningOrder: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  punctuality: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  hardwood: {
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
 });

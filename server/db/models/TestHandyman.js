@@ -2,18 +2,20 @@ const Sequelize = require('sequelize');
 const db = require('../database');
 
 const TestHandyman = db.define('testHandyman', {
-  name: {
-    type: Sequelize.STRING,
+  experience: {
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
+  skills: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: false,
   },
-  service: {
-    type: Sequelize.STRING,
+  training: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: false,
+  },
+  supplies: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
   },
 });
 
