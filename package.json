@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-client-watch": "webpack -w",
     "server": "nodemon index.js -e html,js,css --ignore public --ignore client",
-    "start": "NODE_ENV='development' npm run build-client-watch & "
+    "start": "NODE_ENV='development' npm run build-client-watch & npm run server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/minichloe/simple_quiz.git"
+    "url": "git+https://github.com/minichloe/basic_config.git"
   },
   "author": "",
   "license": "ISC",
