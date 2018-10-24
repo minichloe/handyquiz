@@ -5,10 +5,8 @@ module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
-    if (req.user) {
-      const allProfessionals = await Professional.findAll({ include: [TestCleaning, TestHandyman] });
-      res.json(allProfessionals);
-    }
+    const allProfessionals = await Professional.findAll({ include: [TestCleaning, TestHandyman] });
+    res.json(allProfessionals);
   } catch (err) {
     next(new Error('Access denied'));
   }
@@ -16,13 +14,8 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const exist = await Professional.find({ where: { email: req.body.email } });
-    if (exist) {
-      res.json('Already applied');
-    } else {
-      const professional = await Professional.create(req.body);
-      res.json(professional);
-    }
+    const professional = await Professional.create(req.body);
+    res.json(professional);
   } catch (err) {
     next(err);
   }
