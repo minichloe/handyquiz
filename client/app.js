@@ -1,9 +1,12 @@
 import React from 'react';
+import Topbar from './components/topbar';
+import Routes from './components/routes';
 
 const App = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <Topbar />
+      <Routes />
     </div>
   );
 };
