@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Topbar = () => (
   <div id="topbar">
     <NavLink to="/">
-      <h1>Main</h1>
+      <img src="/handy_logo.png" />
     </NavLink>
   </div>
 );
