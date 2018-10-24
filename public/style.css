@@ -6,7 +6,7 @@
 }
 
 body {
-  background: linear-gradient(#ffffff, #c0c0c0);
+  background: rgb(231, 248, 255);
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -20,12 +20,33 @@ main {
   justify-content: center;
 }
 
+img {
+  width: 100%;
+  max-width: 80px;
+  height: auto
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 #topbar {
   width: 100vw;
+  height: 10vh;
   display: flex;
   flex-direction: row;
-  align-self: center;
-  margin-bottom: 3em;
+  align-items: center;
+  padding-top: 2px;
+  margin-bottom: 2em;
+  background-color: white;
+}
+
+#topbar a {
+  font-size: 1em;
+  color: rgb(163, 163, 163)
+}
+
+.topbarItem {
   padding-left: 2em;
-  background-color: white
 }
