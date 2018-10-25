@@ -35,7 +35,7 @@ export const getTest = test => async dispatch => {
 
 export const createApplicant = professional => async dispatch => {
   const { data } = await axios.post('/api/professional', professional);
-  dispatch(createdAplicant(data));
+  dispatch(createdApplicant(data));
 };
 
 const reducer = (state = initialState, action) => {
