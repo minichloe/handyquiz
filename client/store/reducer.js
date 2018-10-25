@@ -15,7 +15,7 @@ const gotProfessionals = professionals => ({ type: GOT_PROFESSIONALS, profession
 
 const gotTest = test => ({ type: GOT_TEST, test });
 
-const createdApplicant = currApplicant => ({ type: GOT_NEW_PROFESSIONAL, currApplicant });
+export const createdApplicant = currApplicant => ({ type: GOT_NEW_PROFESSIONAL, currApplicant });
 
 export const getProfessionals = () => async dispatch => {
   try {

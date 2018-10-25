@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createdApplicant } from '../store/reducer';
 
 class Signup extends Component {
   state = {
@@ -8,6 +10,7 @@ class Signup extends Component {
     zipcode: '',
     service: '',
     submit: false,
+    emailInUse: false,
   };
 
   handleChange = e => {
@@ -20,6 +23,15 @@ class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if (this.props.professionals.has(state.email.toLowerCase())) {
+      this.setState({ ...this.state, emailInUse: true });
+    } else {
+      const applicant = this.state;
+      delete applicant.submit;
+      delete applicant.emailInUse;
+      this.props.pendingApplicant(applicant);
+      this.setState({ ...this.state, submit: true });
+    }
   };
 
   render() {
@@ -56,4 +68,15 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+const mapState = state => ({
+  professionals: new Set(state.professionals.map(x => x.email)),
+});
+
+const mapDispatch = dispatch => ({
+  pendingApplicant: applicant => dispatch(createdApplicant(applicant)),
+});
+
+export default connect(
+  mapState,
+  mapDispatch
+)(Signup);
