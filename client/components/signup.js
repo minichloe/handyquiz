@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { createdApplicant } from '../store/reducer';
 
 class Signup extends Component {
@@ -39,6 +40,10 @@ class Signup extends Component {
     const handyman = 'handyman';
     const cleaner = 'cleaner';
     const disabled = state.firstName && state.lastName && state.email && state.zipcode && state.service;
+
+    if (this.props.emailInUse) return <Redirect to="/submit" />;
+    if (this.props.submit) return <Redirect to={`/${state.service}`} />;
+
     return (
       <div className="outerBox">
         <h1>Start earning money this week!</h1>
