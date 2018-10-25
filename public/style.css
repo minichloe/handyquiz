@@ -65,3 +65,41 @@ h2 {
   font-size: 1.5em;
   font-weight: normal
 }
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  flex-wrap: wrap;
+  /* flex-grow: 3em; */
+  margin-top: 2em;
+  max-width: 800px;
+}
+
+form input {
+  width: 18em;
+  padding: 0.8em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  font-size: 1em;
+}
+
+form select {
+  width: 20em;
+  border: 1px lightslategray;
+  padding: 0.3em;
+  margin: 0.5em 0;
+  font-size: 1em;
+}
+
+form button {
+  margin-top: 1.5em;
+  width: 10em;
+  font-size: 1em;
+  padding: 0.3em;
+}
+
+form button:disabled {
+  background-color: #ccc;
+  cursor: default
+}
