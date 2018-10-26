@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Signup from './signup';
+import TestCleaning from './testCleaning';
 import Submit from './submit';
 import { getProfessionals } from '../store/reducer';
 
@@ -13,8 +14,10 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={Signup} />
+        <Route exact path="/" component={TestCleaning} />
         <Route exact path="/submit" component={Submit} />
+        <Route exact path="/signup" component={Signup} />
+        <Route path="/cleaner" component={Signup} />
       </Switch>
     );
   }

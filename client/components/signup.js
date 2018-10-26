@@ -24,7 +24,7 @@ class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.props.professionals.has(state.email.toLowerCase())) {
+    if (this.props.professionals.has(this.state.email.toLowerCase())) {
       this.setState({ ...this.state, emailInUse: true });
     } else {
       const applicant = this.state;
@@ -41,8 +41,8 @@ class Signup extends Component {
     const cleaner = 'cleaner';
     const disabled = state.firstName && state.lastName && state.email && state.zipcode && state.service;
 
-    if (this.props.emailInUse) return <Redirect to="/submit" />;
-    if (this.props.submit) return <Redirect to={`/${state.service}`} />;
+    if (this.state.emailInUse) return <Redirect to="/submit" />;
+    if (this.state.submit) return <Redirect to={`/cleaner`} />;
 
     return (
       <div className="outerBox">
@@ -75,6 +75,7 @@ class Signup extends Component {
 
 const mapState = state => ({
   professionals: new Set(state.professionals.map(x => x.email)),
+  applicant: state.currApplicant,
 });
 
 const mapDispatch = dispatch => ({

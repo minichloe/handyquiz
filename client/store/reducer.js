@@ -8,7 +8,6 @@ const initialState = {
   professionals: [],
   admin: false,
   currApplicant: {},
-  test: {},
 };
 
 const gotProfessionals = professionals => ({ type: GOT_PROFESSIONALS, professionals });
