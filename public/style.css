@@ -6,12 +6,13 @@
 }
 
 body {
-  background: rgb(231, 248, 255);
+  background: rgb(237, 249, 255);
   color: rgb(85, 85, 85);
   height: 100vh;
   padding: 0;
   margin: 0;
   width: 100vw;
+  font-size: 1em;
 }
 
 img {
@@ -23,10 +24,18 @@ img {
 a {
   cursor: pointer;
   text-decoration: none;
+  color: grey
 }
 
 .outerBox {
   padding: 2em;
+}
+
+.innerBox {
+  padding: 2em;
+  padding-top: 0em;
+  background-color:white;
+  border-radius: 10px
 }
 
 #topbar {
@@ -59,6 +68,12 @@ h2 {
   font-weight: normal
 }
 
+h3 {
+  font-size: 1em;
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+}
+
 form {
   display: flex;
   flex-direction: row;
@@ -69,10 +84,14 @@ form {
 }
 
 form input {
-  width: 18em;
   padding: 0.8em;
   margin-right: 1em;
   margin-bottom: 1em;
+  font-size: 0.8em;
+}
+
+.signup {
+  width: 18em;
   font-size: 1em;
   border: 1px solid rgb(153, 153, 153);
   border-radius: 5px;
@@ -115,11 +134,22 @@ form button {
 }
 
 form button:disabled {
-  background-color: #ccc;
+  background-color: rgb(120, 206, 148);
   cursor: default
 }
 
+.radioAnswer {
+  margin-bottom: 1em;
+}
+
+.testButton {
+  width: 30em;
+}
+
 @media only screen and (max-width: 630px) {
+  body {
+    font-size: 0.8em;
+  }
   h1 {
     font-size: 1.5em;
   }
@@ -132,14 +162,23 @@ form button:disabled {
     text-align: center;
   }
 
+  .innerBox {
+    text-align: left
+  }
+
   form {
     justify-content: center
   }
 
-  form input {
+  .signup {
     margin-right: 0;
   }
+
   .mainSelect {
     margin: auto;
+  }
+
+  .testButton {
+    width: 40vh;
   }
 }

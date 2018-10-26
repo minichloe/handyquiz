@@ -13,8 +13,6 @@ class TestCleaning extends Component {
     hardwood: '',
   };
 
-  componentDidMount() {}
-
   handleChange = e => {
     this.setState({
       ...this.state,
@@ -42,22 +40,26 @@ class TestCleaning extends Component {
         <h1>Cleaning Quiz</h1>
         <div className="innerBox">
           <form id="cleaning" onSubmit={this.handleSubmit}>
-            {cleaningQ.map((x, i) => (
-              <div key={i}>
-                <label>
-                  <h3>{x.question}</h3>
-                </label>
-                {x.answers.map((y, i) => (
-                  <div key={i}>
-                    <input type="radio" name={x.id} onChange={this.handleChange} value={y.value} />
-                    {y.text}
-                  </div>
-                ))}
-              </div>
-            ))}
-            <button type="submit" disabled={!disabled}>
-              Submit Your Answers
-            </button>
+            <div>
+              {cleaningQ.map((x, i) => (
+                <div key={i}>
+                  <label>
+                    <h3>{x.question}</h3>
+                  </label>
+                  {x.answers.map((y, i) => (
+                    <div className="radioAnswer" key={i}>
+                      <input type="radio" name={x.id} onChange={this.handleChange} value={y.value} />
+                      {y.text}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div>
+              <button className="testButton" type="submit" disabled={!disabled}>
+                Submit Your Answers
+              </button>
+            </div>
           </form>
         </div>
       </div>
