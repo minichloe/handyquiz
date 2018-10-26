@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Topbar = () => (
   <div id="topbar">
     <div className="topbarItem">
-      <NavLink to="/">
+      <Link to="/">
         <img src="/handy_logo.png" />
-      </NavLink>
+      </Link>
     </div>
     <div className="topbarItem">
       <a href="https://prohelp.handy.com/hc/en-us/categories/202588738-New-Prospective-Pros">Need Help?</a>

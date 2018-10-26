@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const db = require('./db');
-const PORT = 5000;
+const PORT = 1337;
 
 // logging middleware
 app.use(volleyball);
@@ -16,15 +16,15 @@ app.use(volleyball);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// static middleware
-app.use(express.static(path.join(__dirname, '../public')));
-
 // all routes
 app.use('/api', require('./api'));
 
+// static middleware
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
 // Send index.html for any other requests
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 });
 
 // error handling middleware
