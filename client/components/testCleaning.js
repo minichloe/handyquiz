@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createApplicant, getTest } from '../store/reducer';
+import { submitApplication } from '../store/reducer';
 import { cleaningQ } from './questions';
 
 class TestCleaning extends Component {
@@ -26,14 +26,11 @@ class TestCleaning extends Component {
     try {
       e.preventDefault();
       const data = this.state;
-      const applicant = this.props.applicant;
       Object.keys(data).forEach(x => (data[x] = parseInt(data[x])));
-      data.type = applicant.service;
-      const submittedTest = await getTest(data);
-      applicant.testCleaningId = submittedTest.id;
-      const submittedApplicant = await createApplicant(applicant);
+      await this.props.submitTest(data);
       this.props.history.replace('/success');
     } catch (err) {
+      console.log(err);
       this.props.history.replace('/error');
     }
   };
@@ -45,7 +42,7 @@ class TestCleaning extends Component {
       <div className="outerBox">
         <h1>Cleaning Quiz</h1>
         <div className="innerBox">
-          <form id={this.props.applicant.email} onSubmit={this.handleSubmit}>
+          <form id="cleaning" onSubmit={this.handleSubmit}>
             {cleaningQ.map((x, i) => (
               <div key={i}>
                 <label>
@@ -69,16 +66,11 @@ class TestCleaning extends Component {
   }
 }
 
-const mapState = state => ({
-  applicant: state.currApplicant,
-});
-
 const mapDispatch = dispatch => ({
-  createApplicant: applicant => dispatch(createApplicant(applicant)),
-  getTest: test => dispatch(getTest(test)),
+  submitTest: test => dispatch(submitApplication(test)),
 });
 
 export default connect(
-  mapState,
+  null,
   mapDispatch
 )(TestCleaning);

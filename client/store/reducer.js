@@ -25,14 +25,17 @@ export const getProfessionals = () => async dispatch => {
   }
 };
 
-export const getTest = test => async dispatch => {
-  const testType = test.type;
-  delete test.type;
+export const submitApplication = test => async (dispatch, state) => {
+  const applicant = state().currApplicant;
+  const testType = applicant.service;
   const { data } = await axios.post(`/api/${testType}`, test);
+  const testId = testType === 'cleaner' ? 'testCleaningId' : 'testHandyManId';
+  applicant[testId] = data.id;
+  dispatch(createApplicant(applicant));
   dispatch(gotTest(data));
 };
 
-export const createApplicant = professional => async dispatch => {
+const createApplicant = professional => async dispatch => {
   const { data } = await axios.post('/api/professional', professional);
   dispatch(createdApplicant(data));
 };
