@@ -9,6 +9,7 @@ class TestCleaning extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props);
     console.log('cleaning test');
   }
 
@@ -23,6 +24,7 @@ class TestCleaning extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ submit: true });
+    this.props.history.push('/signup');
   };
 
   render() {
