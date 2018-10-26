@@ -30,7 +30,6 @@ class TestCleaning extends Component {
       await this.props.submitTest(data);
       this.props.history.replace('/success');
     } catch (err) {
-      console.log(err);
       this.props.history.replace('/error');
     }
   };
