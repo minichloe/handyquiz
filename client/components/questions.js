@@ -128,3 +128,110 @@ export const cleaningQ = [
     ],
   },
 ];
+
+export const handymanQ = [
+  {
+    id: 'experience',
+    question: `How many years of paid experience do you have?`,
+    answers: [
+      {
+        text: `0 - 6 months`,
+        value: 0,
+      },
+      {
+        text: `6 months - 1 year`,
+        value: 1,
+      },
+      {
+        text: `1 year - 3 years`,
+        value: 2,
+      },
+      {
+        text: `3 years - 5 years`,
+        value: 3,
+      },
+      {
+        text: `5+ years`,
+        value: 4,
+      },
+    ],
+  },
+  {
+    id: 'skills',
+    question: `What skills do you have?`,
+    answers: [
+      {
+        text: `Carpentry`,
+        value: 1,
+      },
+      {
+        text: `Plumbing`,
+        value: 1,
+      },
+      {
+        text: `Moving`,
+        value: 1,
+      },
+      {
+        text: `Electrical`,
+        value: 1,
+      },
+      {
+        text: `Painting`,
+        value: 1,
+      },
+      {
+        text: `Lawn care`,
+        value: 1,
+      },
+    ],
+  },
+  {
+    id: `training`,
+    question: `Where did you receive your handyman training?`,
+    answers: [
+      {
+        text: `Self-taught`,
+        value: 1,
+      },
+      {
+        text: `Apprenticeship`,
+        value: 2,
+      },
+      {
+        text: `Vocational School`,
+        value: 1,
+      },
+      {
+        text: `Other`,
+        value: 1,
+      },
+    ],
+  },
+  {
+    id: `supplies`,
+    question: `What supplies do you have?`,
+    answers: [
+      {
+        text: `Basic tools (drill, wrench, hammer, level, etc.)`,
+        value: 2,
+      },
+      {
+        text: `Power tools (circular/table saw, nail gun, shop vac, etc.)`,
+        value: 2,
+      },
+      {
+        text: `Painting supplies (roller, brush, drop cloth, tape, etc.)`,
+        value: 2,
+      },
+      {
+        text: `Lawn care equipment (mower, leaf blower, string trimmer, hand tools, etc.)`,
+        value: 2,
+      },
+      {
+        text: `Ladder`,
+        value: 2,
+      },
+    ],
+  },
+];

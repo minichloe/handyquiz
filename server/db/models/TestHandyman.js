@@ -7,15 +7,16 @@ const TestHandyman = db.define('testHandyman', {
     allowNull: false,
   },
   skills: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false,
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
   training: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false,
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
   supplies: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
 });
 
