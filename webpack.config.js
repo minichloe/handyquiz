@@ -7,6 +7,9 @@ module.exports = {
     filename: './public/bundle.js',
   },
   mode: isDev ? 'development' : 'production',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   devtool: 'source-map',
   module: {
     rules: [

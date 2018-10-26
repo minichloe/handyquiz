@@ -9,7 +9,6 @@ class TestCleaning extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
     console.log('cleaning test');
   }
 
@@ -28,8 +27,6 @@ class TestCleaning extends Component {
   };
 
   render() {
-    if (this.state.submit) return <Redirect to="/signup" />;
-
     return (
       <div className="outerBox">
         <h1>Cleaning TEST!</h1>
@@ -37,7 +34,7 @@ class TestCleaning extends Component {
         <form onSubmit={this.handleSubmit}>
           <button type="submit">Get Started</button>
         </form>
-        <NavLink to="/cleaner">Test</NavLink>
+        <NavLink to="/">Test</NavLink>
       </div>
     );
   }
