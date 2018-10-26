@@ -54,17 +54,19 @@ class Signup extends Component {
             <input type="text" value={state.lastName} name="lastName" placeholder="Last Name" onChange={this.handleChange} />
             <input type="email" value={state.email} name="email" placeholder="Email" onChange={this.handleChange} />
             <input type="number" value={state.zipcode} name="zipcode" placeholder="ZIP Code" min="00501" max="99950" onChange={this.handleChange} />
-            <select name="service" onChange={this.handleChange} value={state.service}>
-              <option value="" disabled hidden>
-                Select Your Service
-              </option>
-              <option key={cleaner} value={cleaner}>
-                Cleaner
-              </option>
-              <option key={handyman} value={handyman}>
-                Handyman
-              </option>
-            </select>
+            <div className="mainSelect">
+              <select name="service" onChange={this.handleChange} value={state.service} required="required">
+                <option value="" disabled hidden>
+                  Select Your Service
+                </option>
+                <option key={cleaner} value={cleaner}>
+                  Cleaner
+                </option>
+                <option key={handyman} value={handyman}>
+                  Handyman
+                </option>
+              </select>
+            </div>
           </div>
           <div>
             <button type="submit" disabled={!disabled}>
