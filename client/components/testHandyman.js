@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { submitApplication } from '../store/reducer';
 import { handymanQ } from './questions';
+import Checkbox from './checkbox';
 
 class TestHandyman extends Component {
   state = {
@@ -9,6 +10,7 @@ class TestHandyman extends Component {
     skills: 0,
     training: 0,
     supplies: 0,
+    checked: new Set(),
   };
 
   handleChange = e => {
@@ -19,11 +21,23 @@ class TestHandyman extends Component {
   };
 
   handleChangeCheck = e => {
-    const value = parseInt(this.state[e.target.name]) + parseInt(e.target.value);
-    this.setState({
-      ...this.state,
-      [e.target.name]: value,
-    });
+    const name = e.target.name;
+    const title = e.target.title;
+    let value = parseInt(this.state[name]);
+    if (this.state.checked.has(title)) {
+      value -= parseInt(e.target.value);
+      this.state.checked.delete(title);
+    } else {
+      value += parseInt(e.target.value);
+      this.state.checked.add(title);
+    }
+    this.setState(
+      {
+        ...this.state,
+        [e.target.name]: value,
+      },
+      () => console.log(this.state)
+    );
   };
 
   handleSubmit = async e => {
@@ -57,7 +71,14 @@ class TestHandyman extends Component {
                       {i === 0 ? (
                         <input type="radio" name={x.id} onChange={this.handleChange} value={y.value} />
                       ) : (
-                        <input type="checkbox" name={x.id} onChange={this.handleChangeCheck} value={y.value} />
+                        <input
+                          type="checkbox"
+                          checked={state.checked.has(y.text)}
+                          title={y.text}
+                          name={x.id}
+                          value={y.value}
+                          onChange={this.handleChangeCheck}
+                        />
                       )}
                       {y.text}
                     </div>
