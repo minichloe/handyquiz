@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { createdApplicant } from '../store/reducer';
 
 class Signup extends Component {
@@ -83,6 +83,8 @@ class Signup extends Component {
             </button>
           </div>
         </form>
+        <br />
+        If you are an admin, please <Link to="/login">login.</Link>
       </div>
     );
   }
