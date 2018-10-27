@@ -196,7 +196,7 @@ export const handymanQ = [
       },
       {
         text: `Apprenticeship`,
-        value: 2,
+        value: 1,
       },
       {
         text: `Vocational School`,
