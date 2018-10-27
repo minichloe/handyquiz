@@ -24,7 +24,6 @@ class TestHandyman extends Component {
       ...this.state,
       [e.target.name]: value,
     });
-    console.log(this.state);
   };
 
   handleSubmit = async e => {

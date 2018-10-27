@@ -42,7 +42,7 @@ class Signup extends Component {
     const disabled = state.firstName && state.lastName && state.email && state.zipcode && state.service;
 
     if (this.state.emailInUse) return <Redirect to="/submit" />;
-    if (this.state.submit) return <Redirect to={`/cleaner`} />;
+    if (this.state.submit) return <Redirect to={`/${state.service}`} />;
 
     return (
       <div className="outerBox">
