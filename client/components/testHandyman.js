@@ -30,13 +30,10 @@ class TestHandyman extends Component {
       value += parseInt(e.target.value);
       this.state.checked.add(title);
     }
-    this.setState(
-      {
-        ...this.state,
-        [e.target.name]: value,
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      ...this.state,
+      [e.target.name]: value,
+    });
   };
 
   handleSubmit = async e => {
