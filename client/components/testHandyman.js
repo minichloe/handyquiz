@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { submitApplication } from '../store/reducer';
 import { handymanQ } from './questions';
-import Checkbox from './checkbox';
 
 class TestHandyman extends Component {
   state = {
