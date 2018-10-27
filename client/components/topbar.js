@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Topbar = () => (
   <div id="topbar">
+    <div className="topbarSpace" />
     <div className="topbarItem">
       <Link to="/">
         <img src="/handy_logo.png" />

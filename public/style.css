@@ -32,6 +32,8 @@ a:hover {
 }
 
 .outerBox {
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 2em;
 }
 
@@ -44,7 +46,7 @@ a:hover {
 
 #topbar {
   width: 100vw;
-  height: 10vh;
+  height: 8vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -61,6 +63,10 @@ a:hover {
   padding-left: 2em;
 }
 
+.topbarSpace {
+  width: 10%;
+}
+
 h1 {
   font-size: 2em;
   font-weight: bold;
@@ -68,7 +74,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: normal
 }
 
@@ -150,7 +156,18 @@ form button:disabled {
   width: 30em;
 }
 
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 800px) {
+  .outerBox {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+
+  .testButton {
+    width: 25em;
+  }
+}
+
+@media only screen and (max-width: 620px) {
   h1 {
     font-size: 1.5em;
   }
@@ -159,12 +176,21 @@ form button:disabled {
     font-size: 1em;
   }
 
+  img {
+    max-width: 60px;
+  }
+
   .outerBox {
     text-align: center;
+    margin: 0;
   }
 
   .innerBox {
     text-align: left
+  }
+
+  .topbarSpace {
+    width: 0;
   }
 
   form {
