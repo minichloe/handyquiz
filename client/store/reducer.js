@@ -31,6 +31,7 @@ export const submitApplication = test => async (dispatch, state) => {
   const { data } = await axios.post(`/api/${testType}`, test);
   const testId = testType === 'cleaner' ? 'testCleaningId' : 'testHandymanId';
   applicant[testId] = data.id;
+  console.log(applicant);
   dispatch(createApplicant(applicant));
   dispatch(gotTest(data));
 };

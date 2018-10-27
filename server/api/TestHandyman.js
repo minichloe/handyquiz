@@ -5,8 +5,11 @@ module.exports = router;
 
 router.post('/', async (req, res, next) => {
   try {
-    const test = await TestHandyman.create(req.body);
-    res.json(test);
+    const test = await TestHandyman.findOrCreate({
+      where: { ...req.body },
+      defaults: req.body,
+    });
+    res.json(test[0]);
   } catch (err) {
     next(err);
   }
