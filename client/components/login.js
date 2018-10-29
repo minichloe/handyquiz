@@ -38,7 +38,7 @@ class Login extends Component {
         <form id={state.email} onSubmit={this.handleSubmit}>
           <div>
             <input className="signup" type="email" value={state.email} name="email" placeholder="Email" onChange={this.handleChange} />
-            <input className="signup" type="password" value={state.lastName} name="lastName" placeholder="Password" onChange={this.handleChange} />
+            <input className="signup" type="password" value={state.password} name="password" placeholder="Password" onChange={this.handleChange} />
           </div>
           <div className="login">
             <button type="submit" disabled={!disabled}>

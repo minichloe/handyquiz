@@ -43,7 +43,7 @@ const mapDispatch = dispatch => ({
 
 export default withRouter(
   connect(
-    null,
+    mapState,
     mapDispatch
   )(Routes)
 );

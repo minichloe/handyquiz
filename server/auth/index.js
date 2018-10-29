@@ -1,19 +1,20 @@
 'use strict';
 
 const router = require('express').Router();
+const { Admin } = require('../db/models');
 
 router.put('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const user = User.findOne({
+    const admin = Admin.findOne({
       where: {
         email,
         password,
       },
     });
-    if (user) {
-      req.session.userId = user.id;
-      res.json(user);
+    if (admin) {
+      req.session.adminId = admin.id;
+      res.json(admin);
     } else {
       res.status(401).send();
     }
@@ -24,9 +25,9 @@ router.put('/login', async (req, res, next) => {
 
 router.get('/admin', async (req, res, next) => {
   try {
-    if (req.session.userId) {
-      const user = await User.findOne({ where: { id: req.session.userId } });
-      res.json(user);
+    if (req.session.adminId) {
+      const admin = await Admin.findOne({ where: { id: req.session.adminId } });
+      res.json(admin);
     } else {
       res.status(404).send();
     }

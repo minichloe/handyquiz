@@ -65,9 +65,7 @@ export const getAdmin = () => async dispatch => {
   try {
     const { data } = await axios.get('/auth/admin');
     dispatch(gotAdmin(data));
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) {}
 };
 
 export const logout = () => async dispatch => {

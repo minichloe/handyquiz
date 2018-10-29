@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../store';
+import { logout } from '../store/reducer';
 
 const Topbar = props => (
   <div id="topbar">
