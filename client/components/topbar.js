@@ -14,13 +14,13 @@ const Topbar = props => (
     <div className="topbarItem">
       <a href="https://prohelp.handy.com/hc/en-us/categories/202588738-New-Prospective-Pros">Need Help?</a>
     </div>
-    {/* {props.admin && ( */}
-    <div className="topbarItem">
-      <button className="logout" onClick={props.logout}>
-        Logout
-      </button>
-    </div>
-    {/* )} */}
+    {props.admin && (
+      <div className="topbarItem">
+        <button className="logout" onClick={props.logout}>
+          Logout
+        </button>
+      </div>
+    )}
   </div>
 );
 

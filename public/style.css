@@ -31,6 +31,12 @@ a:hover {
   text-decoration: underline
 }
 
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
 .outerBox {
   margin-left: 10%;
   margin-right: 10%;
@@ -156,13 +162,22 @@ form button:disabled {
   width: 30em;
 }
 
+.filter {
+  background: none;
+  color: rgb(85, 85, 85);
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+.active {
+  text-decoration: underline
+}
+
 .login {
   margin-top: -1em;
 }
 
 .logout {
-  border: none;
-  font-size: 1em;
   color: rgb(163, 163, 163)
 }
 
@@ -217,5 +232,15 @@ form button:disabled {
 
   .testButton {
     width: 40vh;
+  }
+
+  .filter {
+    font-size: 0.7em;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
   }
 }

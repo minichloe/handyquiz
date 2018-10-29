@@ -21,6 +21,7 @@ class Routes extends Component {
     return (
       <Switch>
         {this.props.admin ? <Route exact path="/" component={Admin} /> : <Route exact path="/" component={Signup} />}
+        <Route exact path="/Admin" component={Admin} />
         <Route exact path="/Success" component={Success} />
         <Route exact path="/submit" component={Submit} />
         <Route exact path="/handyman" component={TestHandyman} />

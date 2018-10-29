@@ -25,7 +25,7 @@ const professionals = [
     service: 'cleaner',
   },
   {
-    firstName: 'Benton ',
+    firstName: 'Benton',
     lastName: 'Cannon',
     email: 'benton.cannon@handy.com',
     zipcode: '10314',
