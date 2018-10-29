@@ -6,7 +6,7 @@ const { Admin } = require('../db/models');
 router.put('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const admin = Admin.findOne({
+    const admin = await Admin.findOne({
       where: {
         email,
         password,

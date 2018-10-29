@@ -11,15 +11,11 @@ class Admin extends Component {
     this.setState({ filter });
   };
 
-  componentDidMount() {
-    console.log(this.props.professionals);
-  }
   render() {
     const filter = this.state.filter;
     return (
       <div className="outerBox">
         <h1>Welcome!</h1>
-        {/* <h2>Click on the respective service to see the applications.</h2> */}
         <div className="innerBox">
           <div className="buttons">
             <button className={`filter ${filter === 'all' ? 'active' : ''}`} onClick={() => this.changeFilter('all')}>

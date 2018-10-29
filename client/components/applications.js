@@ -8,7 +8,7 @@ const Applications = ({ professionals, filter }) => {
       return a;
     }, 0);
   info.forEach(x => {
-    if (x.testCleaning !== null) x.score = getScore(x.testCleaning);
+    if (x.hasOwnProperty('testCleaning') && x.testCleaning !== null) x.score = getScore(x.testCleaning);
     else x.score = getScore(x.testHandyman);
   });
   return (

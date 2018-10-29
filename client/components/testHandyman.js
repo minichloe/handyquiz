@@ -42,7 +42,6 @@ class TestHandyman extends Component {
       const data = this.state;
       delete data.checked;
       Object.keys(data).forEach(x => (data[x] = parseInt(data[x])));
-      console.log(data);
       await this.props.submitTest(data);
       this.props.history.replace('/success');
     } catch (err) {

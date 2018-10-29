@@ -4,25 +4,33 @@ const GOT_PROFESSIONALS = 'GOT_PROFESSIONALS';
 const GOT_TEST = 'GOT_TEST';
 const GOT_NEW_PROFESSIONAL = 'GOT_NEW_PROFESSIONAL';
 const GOT_ADMIN = 'GOT_ADMIN';
+const STARTED_APPLICATION = 'STARTED_APPLICATION';
 
 const initialState = {
   professionals: [],
   admin: false,
   currApplicant: {},
+  test: {},
 };
 
 const gotProfessionals = professionals => ({ type: GOT_PROFESSIONALS, professionals });
+
+const gotNewProfessional = professional => ({ type: GOT_NEW_PROFESSIONAL, professional });
 
 const gotTest = test => ({ type: GOT_TEST, test });
 
 const gotAdmin = admin => ({ type: GOT_ADMIN, admin });
 
-export const createdApplicant = currApplicant => ({ type: GOT_NEW_PROFESSIONAL, currApplicant });
+export const createdApplicant = currApplicant => ({ type: STARTED_APPLICATION, currApplicant });
 
-const createApplicant = professional => async dispatch => {
+const createApplicant = professional => async (dispatch, getState) => {
   try {
     const { data } = await axios.post('/api/professional', professional);
-    dispatch(createdApplicant(data));
+    const test = getState().test;
+    if (data.service === 'cleaner') {
+      data.testCleaning = test;
+    } else data.testHandyman = test;
+    dispatch(gotNewProfessional(data));
   } catch (err) {
     console.error(err);
   }
@@ -37,14 +45,13 @@ export const getProfessionals = () => async dispatch => {
   }
 };
 
-export const submitApplication = test => async (dispatch, state) => {
+export const submitApplication = test => async (dispatch, getState) => {
   try {
-    const applicant = state().currApplicant;
+    const applicant = getState().currApplicant;
     const testType = applicant.service;
     const { data } = await axios.post(`/api/${testType}`, test);
     const testId = testType === 'cleaner' ? 'testCleaningId' : 'testHandymanId';
     applicant[testId] = data.id;
-    console.log(applicant);
     dispatch(createApplicant(applicant));
     dispatch(gotTest(data));
   } catch (err) {
@@ -89,10 +96,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         test: action.test,
       };
-    case GOT_NEW_PROFESSIONAL:
+    case STARTED_APPLICATION:
       return {
         ...state,
         currApplicant: action.currApplicant,
+      };
+    case GOT_NEW_PROFESSIONAL:
+      return {
+        ...state,
+        currApplicant: {},
+        test: {},
+        professionals: [...state.professionals, action.professional],
       };
     case GOT_ADMIN:
       return {

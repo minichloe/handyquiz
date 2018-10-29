@@ -14,7 +14,8 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const professional = await Professional.create(req.body);
+    const cleaner = req.body.service === 'cleaner';
+    const professional = await Professional.create(req.body, { include: [{ model: cleaner ? TestCleaning : TestHandyman }] });
     res.json(professional);
   } catch (err) {
     next(err);
