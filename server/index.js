@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
@@ -15,6 +16,15 @@ app.use(volleyball);
 // body parsing middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// session middleware
+app.use(
+  session({
+    secret: 'Insecure handy secret',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 // all routes
 app.use('/api', require('./api'));

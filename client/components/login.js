@@ -33,18 +33,8 @@ class Login extends Component {
           <div>
             <input className="signup" type="email" value={state.email} name="email" placeholder="Email" onChange={this.handleChange} />
             <input className="signup" type="password" value={state.lastName} name="lastName" placeholder="Password" onChange={this.handleChange} />
-            <input
-              className="signup"
-              type="number"
-              value={state.zipcode}
-              name="zipcode"
-              placeholder="ZIP Code"
-              min="00501"
-              max="99950"
-              onChange={this.handleChange}
-            />
           </div>
-          <div>
+          <div className="login">
             <button type="submit" disabled={!disabled}>
               Login
             </button>
