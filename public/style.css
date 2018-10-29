@@ -160,6 +160,12 @@ form button:disabled {
   margin-top: -1em;
 }
 
+.logout {
+  border: none;
+  font-size: 1em;
+  color: rgb(163, 163, 163)
+}
+
 @media only screen and (max-width: 800px) {
   .outerBox {
     margin-left: 3%;
