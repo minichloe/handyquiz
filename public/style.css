@@ -94,7 +94,7 @@ form {
 }
 
 form input {
-  padding: 0.8em;
+  padding: 1em;
   margin-right: 1em;
   margin-bottom: 1em;
   font-size: 0.8em;
@@ -114,8 +114,8 @@ form input {
   border: 1px solid rgb(153, 153, 153);
   border-radius: 5px;
   font-size: 1em;
-  padding-top: 0.7em;
-  padding-bottom: 0.7em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   padding-left: 0.1em;
 }
 
