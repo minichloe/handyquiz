@@ -16,5 +16,5 @@ Quiz web application built with React-Redux, Node.js, Express.js, and PostgresSQ
 4. `npm run start`
 5. Navigate to http://www.localhost:1337
 6. To log in as an admin, use
-  - email: admin@handy.com
-  - password: handy
+   - email: admin@handy.com
+   - password: handy

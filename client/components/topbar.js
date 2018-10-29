@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../store/reducer';
 
-// Navigation bar
 const Topbar = props => (
   <div id="topbar">
     <div className="topbarSpace" />
@@ -16,7 +15,6 @@ const Topbar = props => (
       <a href="https://prohelp.handy.com/hc/en-us/categories/202588738-New-Prospective-Pros">Need Help?</a>
     </div>
     {props.admin && (
-      // Logout button only visible if logged in
       <div className="topbarItem">
         <button className="logout" onClick={props.logout}>
           Logout

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Applications from './applications';
 
-// Admin component after successful login, which shows applicant info
-
 class Admin extends Component {
   state = {
     filter: 'all',
@@ -14,7 +12,6 @@ class Admin extends Component {
   };
 
   render() {
-    // Filter display by service type
     const filter = this.state.filter;
     return (
       <div className="outerBox">
@@ -38,7 +35,6 @@ class Admin extends Component {
   }
 }
 
-// Arranging info in alphabetical order according to lastname
 const mapState = state => ({
   professionals: state.professionals.sort((a, b) => (a.lastName.toLowerCase() >= b.lastName.toLowerCase() ? 1 : -1)),
 });

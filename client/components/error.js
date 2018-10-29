@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Catch all error/404 page
 const Error = () => (
   <div className="outerBox">
     <h2>
