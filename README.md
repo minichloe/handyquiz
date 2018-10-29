@@ -14,4 +14,6 @@ Quiz web application built with React-Redux, Node.js, Express.js, and PostgresSQ
 2. `npm run seed`, which will fill the database with a few submitted applicants.
 3. `npm run start`
 4. Navigate to http://www.localhost:1337
-5. To log in as an admin, use email: admin@handy.com and password: handy
+5. To log in as an admin, use
+    > email: admin@handy.com
+    > password: handy
