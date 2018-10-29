@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createdApplicant } from '../store/reducer';
+import { login } from '../store/reducer';
 
 class Login extends Component {
   state = {
@@ -17,8 +17,14 @@ class Login extends Component {
     });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = async e => {
+    try {
+      e.preventDefault();
+      await this.props.login(this.state);
+      this.props.history.replace('/');
+    } catch (err) {
+      this.props.history.replace('/error');
+    }
   };
 
   render() {
@@ -47,10 +53,8 @@ class Login extends Component {
   }
 }
 
-const mapState = state => ({});
-
 const mapDispatch = dispatch => ({
-  pendingApplicant: applicant => dispatch(createdApplicant(applicant)),
+  login: data => dispatch(login(data)),
 });
 
 export default connect(

@@ -3,6 +3,7 @@ import axios from 'axios';
 const GOT_PROFESSIONALS = 'GOT_PROFESSIONALS';
 const GOT_TEST = 'GOT_TEST';
 const GOT_NEW_PROFESSIONAL = 'GOT_NEW_PROFESSIONAL';
+const GOT_ADMIN = 'GOT_ADMIN';
 
 const initialState = {
   professionals: [],
@@ -14,7 +15,18 @@ const gotProfessionals = professionals => ({ type: GOT_PROFESSIONALS, profession
 
 const gotTest = test => ({ type: GOT_TEST, test });
 
+const gotAdmin = admin => ({ type: GOT_ADMIN, admin });
+
 export const createdApplicant = currApplicant => ({ type: GOT_NEW_PROFESSIONAL, currApplicant });
+
+const createApplicant = professional => async dispatch => {
+  try {
+    const { data } = await axios.post('/api/professional', professional);
+    dispatch(createdApplicant(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export const getProfessionals = () => async dispatch => {
   try {
@@ -26,19 +38,45 @@ export const getProfessionals = () => async dispatch => {
 };
 
 export const submitApplication = test => async (dispatch, state) => {
-  const applicant = state().currApplicant;
-  const testType = applicant.service;
-  const { data } = await axios.post(`/api/${testType}`, test);
-  const testId = testType === 'cleaner' ? 'testCleaningId' : 'testHandymanId';
-  applicant[testId] = data.id;
-  console.log(applicant);
-  dispatch(createApplicant(applicant));
-  dispatch(gotTest(data));
+  try {
+    const applicant = state().currApplicant;
+    const testType = applicant.service;
+    const { data } = await axios.post(`/api/${testType}`, test);
+    const testId = testType === 'cleaner' ? 'testCleaningId' : 'testHandymanId';
+    applicant[testId] = data.id;
+    console.log(applicant);
+    dispatch(createApplicant(applicant));
+    dispatch(gotTest(data));
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-const createApplicant = professional => async dispatch => {
-  const { data } = await axios.post('/api/professional', professional);
-  dispatch(createdApplicant(data));
+export const login = formData => async dispatch => {
+  try {
+    const { data } = await axios.put('/auth/login', formData);
+    dispatch(gotAdmin(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getAdmin = () => async dispatch => {
+  try {
+    const { data } = await axios.get('/auth/admin');
+    dispatch(gotAdmin(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const logout = () => async dispatch => {
+  try {
+    await axios.delete('/auth/logout');
+    dispatch(gotAdmin(false));
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -57,6 +95,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currApplicant: action.currApplicant,
+      };
+    case GOT_ADMIN:
+      return {
+        ...state,
+        admin: action.admin,
       };
     default:
       return state;
