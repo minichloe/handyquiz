@@ -181,6 +181,17 @@ form button:disabled {
   color: rgb(163, 163, 163)
 }
 
+.buttons {
+  margin-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.info {
+  padding: 0.5em;
+  margin-top: 0.5em;
+  line-height: 1.3em;
+}
+
 @media only screen and (max-width: 800px) {
   .outerBox {
     margin-left: 3%;
@@ -242,5 +253,9 @@ form button:disabled {
     display: flex;
     flex-direction: row;
     justify-content: space-around
+  }
+
+  .info {
+    font-size: 0.9em;
   }
 }
