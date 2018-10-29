@@ -14,7 +14,7 @@ const Applications = ({ professionals, filter }) => {
   return (
     <>
       {info.map(x => (
-        <div className="info">
+        <div key={x.id} className="info">
           Name: {x.firstName} {x.lastName}
           <br />
           Email: {x.email} <br />

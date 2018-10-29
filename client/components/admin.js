@@ -40,7 +40,7 @@ class Admin extends Component {
 }
 
 const mapState = state => ({
-  professionals: state.professionals.sort((a, b) => a.lastName - b.lastName),
+  professionals: state.professionals.sort((a, b) => (a.lastName.toLowerCase() >= b.lastName.toLowerCase() ? 1 : -1)),
 });
 
 export default connect(mapState)(Admin);
