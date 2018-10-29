@@ -7,6 +7,7 @@ import TestHandyman from './testHandyman';
 import Success from './success';
 import Submit from './submit';
 import Error from './error';
+import Login from './login';
 import { getProfessionals } from '../store/reducer';
 
 class Routes extends Component {
@@ -22,6 +23,7 @@ class Routes extends Component {
         <Route exact path="/submit" component={Submit} />
         <Route exact path="/handyman" component={TestHandyman} />
         <Route exact path="/cleaner" component={TestCleaning} />
+        <Route exact path="/login" component={Login} />
         <Route path="*" component={Error} />
       </Switch>
     );
