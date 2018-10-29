@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import Applications from './applications';
 
 class Admin extends Component {
   state = {
@@ -32,6 +32,7 @@ class Admin extends Component {
               Handymen
             </button>
           </div>
+          <Applications professionals={this.props.professionals} filter={filter} />
         </div>
       </div>
     );
@@ -39,7 +40,7 @@ class Admin extends Component {
 }
 
 const mapState = state => ({
-  professionals: state.professionals,
+  professionals: state.professionals.sort((a, b) => a.lastName - b.lastName),
 });
 
 export default connect(mapState)(Admin);
