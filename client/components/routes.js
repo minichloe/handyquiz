@@ -4,21 +4,23 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 import Signup from './signup';
 import TestCleaning from './testCleaning';
 import TestHandyman from './testHandyman';
+import Admin from './admin';
 import Success from './success';
 import Submit from './submit';
 import Error from './error';
 import Login from './login';
-import { getProfessionals } from '../store/reducer';
+import { getProfessionals, getAdmin } from '../store/reducer';
 
 class Routes extends Component {
   componentDidMount() {
+    this.props.getAdmin();
     this.props.getProfessionals();
   }
 
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={Signup} />
+        {this.props.admin ? <Route exact path="/" component={Admin} /> : <Route exact path="/" component={Signup} />}
         <Route exact path="/Success" component={Success} />
         <Route exact path="/submit" component={Submit} />
         <Route exact path="/handyman" component={TestHandyman} />
@@ -30,8 +32,13 @@ class Routes extends Component {
   }
 }
 
+const mapState = state => ({
+  admin: !!state.admin,
+});
+
 const mapDispatch = dispatch => ({
   getProfessionals: () => dispatch(getProfessionals()),
+  getAdmin: () => dispatch(getAdmin()),
 });
 
 export default withRouter(
