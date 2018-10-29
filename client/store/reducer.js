@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Actions
 const GOT_PROFESSIONALS = 'GOT_PROFESSIONALS';
 const GOT_TEST = 'GOT_TEST';
 const GOT_NEW_PROFESSIONAL = 'GOT_NEW_PROFESSIONAL';
@@ -13,6 +14,7 @@ const initialState = {
   test: {},
 };
 
+// Action creators
 const gotProfessionals = professionals => ({ type: GOT_PROFESSIONALS, professionals });
 
 const gotNewProfessional = professional => ({ type: GOT_NEW_PROFESSIONAL, professional });
@@ -21,8 +23,10 @@ const gotTest = test => ({ type: GOT_TEST, test });
 
 const gotAdmin = admin => ({ type: GOT_ADMIN, admin });
 
+// This saves the applicant on state but not on the database as the test has not been completed
 export const createdApplicant = currApplicant => ({ type: STARTED_APPLICATION, currApplicant });
 
+// Saves the applicant in the database and adds it to the professionals array
 const createApplicant = professional => async (dispatch, getState) => {
   try {
     const { data } = await axios.post('/api/professional', professional);
@@ -36,6 +40,7 @@ const createApplicant = professional => async (dispatch, getState) => {
   }
 };
 
+// Getting all submitted applicants
 export const getProfessionals = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/professional');
@@ -45,6 +50,7 @@ export const getProfessionals = () => async dispatch => {
   }
 };
 
+// Submits test and applicant to the database
 export const submitApplication = test => async (dispatch, getState) => {
   try {
     const applicant = getState().currApplicant;
@@ -68,6 +74,7 @@ export const login = formData => async dispatch => {
   }
 };
 
+// Checks if logged in on session
 export const getAdmin = () => async dispatch => {
   try {
     const { data } = await axios.get('/auth/admin');

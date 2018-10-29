@@ -1,3 +1,4 @@
+// Data for questions on each text
 export const cleaningQ = [
   {
     id: 'experience',

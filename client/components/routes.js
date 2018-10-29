@@ -17,8 +17,10 @@ class Routes extends Component {
     this.props.getProfessionals();
   }
 
+  // All routes
   render() {
     return (
+      // Conditional rendering based on login status
       <Switch>
         {this.props.admin ? <Route exact path="/" component={Admin} /> : <Route exact path="/" component={Signup} />}
         <Route exact path="/Admin" component={Admin} />
@@ -37,6 +39,7 @@ const mapState = state => ({
   admin: !!state.admin,
 });
 
+// Getting all previous applicants and checking login status
 const mapDispatch = dispatch => ({
   getProfessionals: () => dispatch(getProfessionals()),
   getAdmin: () => dispatch(getAdmin()),

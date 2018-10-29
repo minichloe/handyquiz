@@ -3,6 +3,7 @@ const TestCleaning = require('./TestCleaning');
 const TestHandyman = require('./TestHandyman');
 const Admin = require('./Admin');
 
+// One to many association as many applicants can have same answer for tests
 Professional.belongsTo(TestCleaning);
 TestCleaning.hasMany(Professional);
 

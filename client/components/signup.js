@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { createdApplicant } from '../store/reducer';
 
+// Sign up for first stage of application
 class Signup extends Component {
   state = {
     firstName: '',
@@ -22,6 +23,7 @@ class Signup extends Component {
     });
   };
 
+  // Checks if email is already in professionals array, and redirect accordingly
   handleSubmit = e => {
     e.preventDefault();
     if (this.props.professionals.has(this.state.email.toLowerCase())) {
@@ -90,6 +92,7 @@ class Signup extends Component {
   }
 }
 
+// Convert array to set of emails for quick lookup
 const mapState = state => ({
   professionals: new Set(state.professionals.map(x => x.email)),
   applicant: state.currApplicant,
